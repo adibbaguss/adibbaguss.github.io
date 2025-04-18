@@ -43,8 +43,8 @@ function About() {
             <div className="md:basis-2/3 sm:basis-0 ">
               <div className="w-full relative bottom-0 h-full lg:h-screen md:block hidden ">
                 <img
-                  className="absolute  right-0 bottom-0 lg:h-screen max-h-full max-w-screen-sm  md:max-w-26rem lg:max-w-none object-cover transition-transform duration-300 transform object-left grayscale "
-                  src={dataJson.about.avatar} key={dataJson.about.avatar}
+                  className="absolute right-0 bottom-0 lg:h-screen max-h-full max-w-screen-sm  md:max-w-26rem lg:max-w-none object-cover transition-transform duration-300 transform object-left grayscale "
+                  src={dataJson.about.avatar}
                   alt="avatar about"
                 />
               </div>

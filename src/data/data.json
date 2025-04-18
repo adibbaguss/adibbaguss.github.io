@@ -1,11 +1,11 @@
 {
   "name": "Adib Bagus Sudiyono",
-  "role": "Jr. Full Stack Developer | Graphic Designer",
+  "role": "Web Developer | Graphic Designer",
 
   "//": "1. Hero Section",
   "hero": {
     "sectionName": "Hero Section",
-    "avatar": "/assets/Images/Hero/avatar.png",
+    "avatar": "/assets/Images/Hero/avatar.webp",
     "heroText1": "/assets/Images/Hero/2.png",
     "heroText2": "/assets/Images/Hero/1.png"
   },
@@ -13,9 +13,9 @@
   "//": "2. About Section",
   "about": {
     "sectionName": "About Me",
-    "avatar": "/assets/Images/About/avatar.png",
-    "aboutMe": "A graduate of Informatics Engineering from Ahmad Dahlan University, specialized in software development. Experienced in front-end development, academic administration management, and website optimization. Proficient in teamwork, SDLC methodology implementation, with additional skills in graphic design and video editing.",
-    "role_1": "Jr. Full Stack Developer",
+    "avatar": "/assets/Images/About/avatar.webp",
+    "aboutMe": "I am a dedicated Full Stack Web Developer with a Bachelor's degree in Informatics from Universitas Ahmad Dahlan. Currently working as a Programmer at PT. TCP Batang, I have hands-on experience in building responsive, efficient, and user-friendly web applications. Proficient in technologies such as HTML, CSS, JavaScript, PHP, Laravel, MySQL, and React, I am passionate about developing innovative digital solutions that deliver real impact. Additionally, I possess graphic design skills to support the visual and creative aspects of every project I work on.",
+    "role_1": "Web Developer",
     "role_2": "Graphic Designer"
   },
 
@@ -24,6 +24,16 @@
 
   "//": "4. Experience Section",
   "experience": [
+    {
+      "type": "work",
+      "date": "September 2024 – Present",
+      "title": "Programmer",
+      "subtitle": "PT. TCP BATANG",
+      "description": "Developing and maintaining company applications using modern technologies, implementing best practices in software development, and ensuring optimal performance and user experience.",
+      "icon": "fas fa-briefcase",
+      "background": "#2196F3",
+      "color": "#fff"
+    },
     {
       "type": "bootcamp",
       "date": "06 May 2024 – 06 July 2024 (2 Month)",

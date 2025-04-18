@@ -36,7 +36,8 @@ const Certificates = () => {
 
   return (
     <section className="p-5 overflow-hidden">
-      <h1 className="font-bold text-1xl sm:text-2xl md:text-3xl lg:text-3xl mb-10 text-primary-color text-center">My Certificates</h1>
+      <h1 className="font-bold text-1xl sm:text-2xl md:text-3xl lg:text-3xl text-primary-color text-center">My Certificates</h1>
+      <h6 className="text-center text-primary-color mb-10">-- Click the image to view the certificate --</h6>
       <Masonry breakpointCols={breakpointColumnsObj} className="my-masonry-grid" columnClassName="my-masonry-grid_column">
         {dataJson.certificates.slice(0, itemsToShow).map((certificate) => (
           <div key={certificate.id} className="image-wrapper">

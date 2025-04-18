@@ -16,7 +16,7 @@ function Hero() {
   return (
     <section className="lg:h-screen bg-primary-color text-secondary-color items-center justify-center overflow-hidden">
 
-      <div className="lg:absolute lg:bottom-0 relative mt-1">
+      <div className="lg:absolute lg:bottom-0 relative mt-1 ">
         <div className="mb-2">
           <Weather />
         </div>

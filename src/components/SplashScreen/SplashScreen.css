@@ -1,0 +1,207 @@
+.splash-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, #0f172a, #1e293b);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  animation: gradientBG 5s ease infinite;
+  background-size: 200% 200%;
+  transition: opacity 0.5s ease;
+  overflow: hidden;
+}
+
+.splash-screen.fade-out {
+  opacity: 0;
+}
+
+@keyframes gradientBG {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.splash-content {
+  text-align: center;
+  color: white;
+  max-width: 500px;
+  padding: 2rem;
+  position: relative;
+  z-index: 2;
+}
+
+.logo-container {
+  margin-bottom: 2rem;
+}
+
+.logo-circle {
+  width: 100px;
+  height: 100px;
+  background: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.6);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+  }
+}
+
+.logo-text {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #0f172a;
+}
+
+.splash-title {
+  font-size: 2.5rem;
+  margin: 0;
+  animation: fadeInUp 1s ease;
+  letter-spacing: 2px;
+}
+
+.splash-subtitle {
+  font-size: 1.2rem;
+  margin-top: 0.5rem;
+  margin-bottom: 2rem;
+  opacity: 0.8;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  height: 1.5em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cursor {
+  display: inline-block;
+  width: 3px;
+  margin-left: 2px;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.progress-container {
+  width: 100%;
+  height: 4px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  margin: 1rem 0;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #38bdf8, #818cf8);
+  transition: width 0.2s ease;
+  border-radius: 4px;
+  box-shadow: 0 0 10px rgba(129, 140, 248, 0.8);
+}
+
+.loading-text {
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  opacity: 0.8;
+}
+
+/* Particles Animation */
+.particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.particle {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  animation: float 5s infinite ease-in-out;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0) translateX(0) scale(1);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100px) translateX(20px) scale(0);
+    opacity: 0;
+  }
+}
+
+/* Extra sparkle effect */
+.logo-circle::after {
+  content: '';
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background: transparent;
+  border-radius: 50%;
+  animation: sparkle 3s infinite;
+}
+
+@keyframes sparkle {
+  0%, 100% {
+    box-shadow: 0 0 0 rgba(255, 255, 255, 0);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.7), 
+                0 0 60px rgba(129, 140, 248, 0.5);
+  }
+} 
