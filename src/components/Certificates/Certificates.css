@@ -13,13 +13,25 @@
   background-clip: padding-box;
 }
 
+/* Image wrapper untuk menjaga proporsi */
+.image-wrapper {
+  position: relative;
+  width: 100%;
+  padding-bottom: 75%; /* Rasio 4:3, sesuaikan sesuai kebutuhan */
+  margin-bottom: 15px;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
 /* Gaya gambar di dalam grid */
 .masonry-image {
-  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  height: auto;
-  margin-bottom: 15px; /* Jarak antar gambar */
-  border-radius: 8px; /* Sudut gambar yang melengkung */
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
 }
 
 /* Tombol Show More/Less */

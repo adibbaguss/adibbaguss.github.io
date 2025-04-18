@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import ReactCardFlip from 'react-card-flip';
 import { motion } from 'framer-motion';
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -12,6 +12,34 @@ library.add(faChevronDown, faChevronUp);
 function Project({ title, description, technologies, image, github, preview }) {
   const [isFlipped, setIsFlipped] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+  const cardRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.unobserve(entry.target);
+        }
+      },
+      {
+        root: null,
+        rootMargin: '50px',
+        threshold: 0.1,
+      }
+    );
+
+    if (cardRef.current) {
+      observer.observe(cardRef.current);
+    }
+
+    return () => {
+      if (cardRef.current) {
+        observer.unobserve(cardRef.current);
+      }
+    };
+  }, []);
 
   const toggleDescription = () => {
     setIsExpanded(!isExpanded);
@@ -22,50 +50,63 @@ function Project({ title, description, technologies, image, github, preview }) {
   };
 
   return (
-    <ReactCardFlip isFlipped={isFlipped} flipDirection="horizontal">
-      {/* Front of the card */}
-      <div className="bg-white shadow-lg border border-1 p-4 rounded-lg mb-4 overflow-hidden cursor-pointer" onClick={handleClick}>
-        <img src={image} alt={title} className="rounded-lg w-full h-auto" style={{ maxHeight: '300px', objectFit: 'cover' }} loading="lazy" />
-        <h4 className="font-semibold text-center text-primary-color text-sm lg:text-base mt-2">{title}</h4>
-      </div>
+    <div ref={cardRef}>
+      {isVisible ? (
+        <ReactCardFlip isFlipped={isFlipped} flipDirection="horizontal">
+          {/* Front of the card */}
+          <div className="bg-white shadow-lg border border-1 p-4 rounded-lg mb-4 overflow-hidden cursor-pointer" onClick={handleClick}>
+            <img 
+              src={image} 
+              alt={title} 
+              className="rounded-lg w-full h-auto" 
+              style={{ maxHeight: '300px', objectFit: 'cover' }} 
+              loading="lazy"
+              decoding="async"
+            />
+            <h4 className="font-semibold text-center text-primary-color text-sm lg:text-base mt-2">{title}</h4>
+          </div>
 
-      {/* Back of the card */}
-      <div className="bg-white shadow-lg border border-1 border-solid p-4 rounded-lg mb-4 overflow-hidden cursor-pointer" onClick={handleClick}>
-        <p className={`text-gray-700 text-sm lg:text-base text-justify mb-2 ${isExpanded ? '' : 'line-clamp-4'}`} dangerouslySetInnerHTML={{ __html: description }}></p>
-        <button
-          onClick={(e) => {
-            e.stopPropagation();
-            toggleDescription();
-          }}
-          className="text-blue-500 hover:underline"
-        >
-          {isExpanded ? 'Show less' : 'Read more'}
-        </button>
-        <div className="flex flex-wrap mt-2">
-          {technologies.map((tech, index) => (
-            <span key={index} className="bg-gray-200 text-black rounded-lg px-3 py-1 text-xs mr-2 mb-2">
-              {tech}
-            </span>
-          ))}
-        </div>
-        <p className="text-sm mt-3 mb-2 flex justify-end">
-          {github ? (
-            <a className="border border-2 border-solid border-green text-green p-2 font-semibold rounded-lg mr-2 hover:bg-green hover:text-primary-color" target="_blank" rel="noopener noreferrer" href={github}>
-              Github
-            </a>
-          ) : (
-            <span className="bg-red text-white p-2 font-semibold rounded-lg mr-2 ">Not available</span>
-          )}
-          {preview ? (
-            <a className="text-green bg-primary-color p-2 font-semibold rounded-lg" target="_blank" rel="noopener noreferrer" href={preview}>
-              Preview
-            </a>
-          ) : (
-            <span className="bg-red text-white p-2 font-semibold rounded-lg">Not available</span>
-          )}
-        </p>
-      </div>
-    </ReactCardFlip>
+          {/* Back of the card */}
+          <div className="bg-white shadow-lg border border-1 border-solid p-4 rounded-lg mb-4 overflow-hidden cursor-pointer" onClick={handleClick}>
+            <p className={`text-gray-700 text-sm lg:text-base text-justify mb-2 ${isExpanded ? '' : 'line-clamp-4'}`} dangerouslySetInnerHTML={{ __html: description }}></p>
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                toggleDescription();
+              }}
+              className="text-blue-500 hover:underline"
+            >
+              {isExpanded ? 'Show less' : 'Read more'}
+            </button>
+            <div className="flex flex-wrap mt-2">
+              {technologies.map((tech, index) => (
+                <span key={index} className="bg-gray-200 text-black rounded-lg px-3 py-1 text-xs mr-2 mb-2">
+                  {tech}
+                </span>
+              ))}
+            </div>
+            <p className="text-sm mt-3 mb-2 flex justify-end">
+              {github ? (
+                <a className="border border-2 border-solid border-green text-green p-2 font-semibold rounded-lg mr-2 hover:bg-green hover:text-primary-color" target="_blank" rel="noopener noreferrer" href={github}>
+                  Github
+                </a>
+              ) : (
+                <span className="bg-red text-white p-2 font-semibold rounded-lg mr-2 ">Not available</span>
+              )}
+              {preview ? (
+                <a className="text-green bg-primary-color p-2 font-semibold rounded-lg" target="_blank" rel="noopener noreferrer" href={preview}>
+                  Preview
+                </a>
+              ) : (
+                <span className="bg-red text-white p-2 font-semibold rounded-lg">Not available</span>
+              )}
+            </p>
+          </div>
+        </ReactCardFlip>
+      ) : (
+        <div className="bg-gray-200 animate-pulse rounded-lg mb-4" style={{ height: '300px' }}></div>
+      )}
+    </div>
   );
 }
 

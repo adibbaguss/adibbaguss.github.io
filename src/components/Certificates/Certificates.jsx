@@ -39,14 +39,17 @@ const Certificates = () => {
       <h1 className="font-bold text-1xl sm:text-2xl md:text-3xl lg:text-3xl mb-10 text-primary-color text-center">My Certificates</h1>
       <Masonry breakpointCols={breakpointColumnsObj} className="my-masonry-grid" columnClassName="my-masonry-grid_column">
         {dataJson.certificates.slice(0, itemsToShow).map((certificate) => (
-          <img
-            key={certificate.id}
-            src={certificate.src}
-            alt={certificate.alt}
-            className="masonry-image cursor-pointer transform hover:scale-105 hover:shadow-lg transition-transform border border-solid border-primary-color rounded-md"
-            onClick={() => openModal(certificate.src)}
-            loading="lazy"
-          />
+          <div key={certificate.id} className="image-wrapper">
+            <img
+              src={certificate.src}
+              alt={certificate.alt}
+              className="masonry-image cursor-pointer transform hover:scale-105 hover:shadow-lg transition-transform border border-solid border-primary-color rounded-md"
+              onClick={() => openModal(certificate.src)}
+              loading="lazy"
+              width="100%"
+              height="auto"
+            />
+          </div>
         ))}
       </Masonry>
       <div className="text-center mt-4">

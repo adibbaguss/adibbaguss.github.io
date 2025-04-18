@@ -7,7 +7,7 @@ const SocialIcons = () => {
       <a href="https://www.linkedin.com/in/adibbaguss/" target="_blank" rel="noopener noreferrer">
         <Icon icon="devicon:linkedin" className="text-3xl  hover:text-4xl" />
       </a>
-      <a href="https://www.instagram.com/adibbagus_//" target="_blank" rel="noopener noreferrer">
+      <a href="https://www.instagram.com/adibbagus_" target="_blank" rel="noopener noreferrer">
         <Icon icon="skill-icons:instagram" className="text-3xl  hover:text-4xl" />
       </a>
       <a href="https://github.com/adibbaguss" target="_blank" rel="noopener noreferrer">

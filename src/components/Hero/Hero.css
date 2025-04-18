@@ -1,3 +1,35 @@
 .aos-animate {
   opacity: 1 !important; /* Mengatur opacity ke 1 */
 }
+
+.hero-text {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+}
+
+.hero-text::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 0, 0, 0.8),
+    transparent
+  );
+  transform: skewX(-25deg);
+  animation: shimmer 1s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}

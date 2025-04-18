@@ -65,10 +65,10 @@ const Weather = () => {
     <div className="mx-3 font-thin mb-0">
       {weather && (
         <>
-          <div className="hidden sm:grid sm:grid  text-xs">
+          <div className="hidden sm:grid sm:grid text-[10px] sm:text-xs md:text-xs lg:text-base">
             <div className="flex" data-aos="fade-down" data-aos-duration="1000">
               <span className="font-bold mb-0 mt-auto">{weather.main.temp.toFixed(1)}°C</span>
-              <img className="w-8" src={`http://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`} alt="weather icon" />
+              <img className="w-6 sm:w-8 md:w-8 lg:w-12" src={`http://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`} alt="weather icon" />
               <span className="mb-0 mt-auto">
                 Batang, Central Java, <span className="font-bold">Indonesia</span>
               </span>
@@ -85,8 +85,8 @@ const Weather = () => {
             </div>
           </div>
 
-          <div className="sm:hidden text-xs">
-            <div className="flex  mb-1 mt-2" data-aos="fade-down" data-aos-duration="800">
+          <div className="sm:hidden text-[10px] sm:text-xs md:text-sm lg:text-base">
+            <div className="flex mb-1 mt-2" data-aos="fade-down" data-aos-duration="800">
               <div className={`p-1 rounded-full my-auto mr-1 ${timeColor === 'green' ? 'bg-green' : 'bg-red'}`}></div>
               <div>
                 {timeColor === 'green' ? <span>Available</span> : <span>Not Available</span>} <span className="font-bold">For Work Now</span>
